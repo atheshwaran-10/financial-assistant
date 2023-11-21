@@ -10,6 +10,8 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 
+
+
 app.get('/extract-values', async (req, res) => {
   // get search parameters
   try {
@@ -46,7 +48,7 @@ app.get('/extract-values', async (req, res) => {
       const valueString = $(selector).text().trim();
       let numericValue = parseFloat(valueString.replace(/[^\d.]/g, '')) * (valueString.includes('K')? 1000: 1);
       // to inr from usd
-      const response = (await fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_LINK}/latest/USD`));
+      
       // const curr = response 
       // console.log(numericValue,response)
       return isNaN(numericValue) ? null : numericValue * 80; 
