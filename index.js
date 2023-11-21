@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 const countryStateCity = require('country-state-city');
 const cors = require('cors');
 const { json } = require('body-parser');
+const axios = require('axios');
 const app = express();
 const port = 3000;
 
@@ -30,8 +31,8 @@ app.get('/extract-values', async (req, res) => {
       url += `${city}/`;
     }
     console.log("***************************************", country)
-    const response = await fetch(url)
-    const html = await response.text();
+    const response = await axios.get(url);
+    const html = await response.data;
     
 
 
