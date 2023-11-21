@@ -1,11 +1,13 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const countryStateCity = require('country-state-city');
+const cors = require('cors');
 const { json } = require('body-parser');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/extract-values', async (req, res) => {
   // get search parameters
