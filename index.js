@@ -18,10 +18,8 @@ app.get('/extract-values', async (req, res) => {
       url += `${country}/`;
     }
     if (state && country) {
-      // get country code
       const countryCode = countryStateCity.Country.getAllCountries().find(c => country.toLowerCase() === c.name.toLowerCase()).isoCode;
 
-      // get state code
 
       const stateCode = countryStateCity.State.getStatesOfCountry(countryCode).find(s => state.toLowerCase() === s.name.toLowerCase())?.isoCode;
 
@@ -34,7 +32,7 @@ app.get('/extract-values', async (req, res) => {
     console.log("***************************************", country)
     const response = await fetch(url)
     const html = await response.text();
-    // console.log(html)
+    
 
 
     if (!html) {
